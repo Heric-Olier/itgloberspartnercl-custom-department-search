@@ -7,15 +7,14 @@ import { SearchBar } from 'vtex.store-components';
 const DepartmentSearch = () => {
   const { data, loading } = useQuery(QUERY_VALUE);
   const [slug, setSlug] = useState('');
-  console.log("Mi slug es", slug);
   return (
     loading ? <div>Loading...</div> :
-      <div className='flex flex-row justify-between items-center'>
+      <div className='flex flex-column w-100'>
         <DepartmentGroup
-          departments={data?.categories[0]?.children}
+          departments={data?.categories}
           handleSetSlug={setSlug}
         />
-        <div className='pr5'>
+        <div>
           <SearchBar
             customSearcPageUrl={slug}
             placeholder="Busqueda por departamento"

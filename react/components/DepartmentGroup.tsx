@@ -12,9 +12,8 @@ type Category = {
 }
 
 const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
-  console.log("Mis datos de query son", departments)
   const onHandleSetSlug = (event: any) => {
-    handleSetSlug(`${event.target.value}/$\{term\}&map=ft`)
+    handleSetSlug(`${event.target.value}/$\{term\}?_q=$\{term\}&map=ft`)
   }
   const DepartmentOptions = departments.map((department: Category) => {
     return (
@@ -26,8 +25,9 @@ const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
   })
 
   return (
-    <div className='pr5'>
+    <div>
       <select
+        className='w-100 pa2 br2 ba b--light-gray'
         defaultValue={0}
         onChange={onHandleSetSlug}
       >

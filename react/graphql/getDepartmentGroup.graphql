@@ -1,5 +1,5 @@
 query {
-  categories(treeLevel: 2) {
+  categories(treeLevel: 1) {
     id
     name
     slug
