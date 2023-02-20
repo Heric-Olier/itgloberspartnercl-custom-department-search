@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {
   departments: [Category],
-  handleSetSlug: (slug: string) => void,
+  handleSetSlug: any
 }
 
 type Category = {
@@ -12,15 +12,17 @@ type Category = {
 }
 
 const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
-  const onHandleSetSlug = (event: any) => {
-    handleSetSlug(`${event.target.value}/$\{term\}?_q=$\{term\}&map=ft`)
+  const onHandleSetSlug = (e: any) => {
+    handleSetSlug(`${e.target.value}/$\{term\}?_q=$\{term\}&map=ft`)
   }
-  const DepartmentOptions = departments.map((department: Category) => {
+  const DepartmentOptions: any = departments.map((department: Category) => {
     return (
+
       <option
         key={department.id}
         value={department.slug}>
-        {department.name}</option>
+        {department.name}
+      </option>
     )
   })
 
@@ -28,10 +30,12 @@ const DepartmentGroup = ({ departments, handleSetSlug }: Props) => {
     <div>
       <select
         className='w-100 pa2 br2 ba b--light-gray'
+        style={{ fontFamily: 'Roboto-Regular' }}
         defaultValue={0}
-        onChange={onHandleSetSlug}
+        onChange={(e) => onHandleSetSlug(e)}
       >
         <option disabled value="0">Seleccione una opción</option>
+
         {DepartmentOptions}
       </select>
     </div>
